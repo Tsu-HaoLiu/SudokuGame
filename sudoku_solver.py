@@ -259,38 +259,3 @@ class SudokuCore:
             raise Exception(f"This board can't be solved with [{self.method}] method")
 
         return self.board
-
-
-test_board = [
-    [0, 3, 0, 0, 8, 0, 0, 0, 6],
-    [2, 0, 0, 0, 0, 0, 7, 0, 3],
-    [0, 7, 0, 0, 0, 0, 0, 0, 0],
-
-    [0, 0, 1, 2, 0, 0, 0, 0, 0],
-    [0, 5, 2, 8, 0, 0, 0, 0, 0],
-    [0, 0, 0, 3, 6, 7, 0, 0, 0],
-
-    [9, 0, 4, 0, 0, 0, 0, 5, 0],
-    [0, 0, 0, 0, 9, 0, 2, 0, 0],
-    [0, 0, 0, 0, 0, 6, 0, 8, 0]
-]
-
-# methods = ["sorted_recursion", "recursion"]
-# # meth = "sorted_recursion"
-# sds = []
-# q = 0
-# # while q < 10:
-# for meth in methods:
-#     q += 1
-#     print(f"Running with method [{meth}]")
-#     t = time.time()
-#     sc = SudokuCore(test_board, meth)
-#     # print(sc.board)
-#     # sc.addboard(test_board)
-#     # sc.setmethod(meth)
-#     # sc.solve()
-#     ct = time.time() - t
-#     sds.append(ct)
-#     print(f"Finished: {ct:.4f}s")
-#     # time.sleep(2)
-# print(sum(sds)/10)
