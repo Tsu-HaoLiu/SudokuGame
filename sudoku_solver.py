@@ -1,5 +1,18 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#----------------------------------------------------------------------------
+# Created Date: Sunday January 16 15:54:00 UTC 2022
+"""sudoku_solver.py: This is for solving and generating Sudoku puzzles"""
+#----------------------------------------------------------------------------
+
+__author__ = "Tsu-Hao Liu"
+__copyright__ = "Copyright 2022, SudokuSolver"
+
+__license__ = "MIT License"
+__version__ = "2022.1v6"
+
+# imports
 import random
-import time
 from copy import *
 
 
@@ -88,7 +101,10 @@ class SudokuCore:
         :return: Depending on the method this function can return a `Boolean` or `List`
         """
         self.fix_table()
-        possible = list(set(self.fixed_list) - set(self.board[row]) - set(self.board_col[col]) - set(self.three_by[(row//self.ee)*self.ee+col//self.ee]))
+        possible = list(set(self.fixed_list) -
+                        set(self.board[row]) -
+                        set(self.board_col[col]) -
+                        set(self.three_by[(row//self.ee)*self.ee+col//self.ee]))
         possible.sort()
 
         if method == "recursion":
@@ -141,7 +157,7 @@ class SudokuCore:
 
     def solved_board(self):
         return self.board
-
+    
     def remove_num(self, board: list[list], dif: str) -> list[list]:
         """A function to remove numbers from the fully solved sudoku board depending on difficulty
 
@@ -204,8 +220,8 @@ class SudokuCore:
     def possible_positions(self):
         """This function scans the row -> column and finds all possible numbers that
         can fit in the empty square and save it in a list.
-
         [3, 8, [9, 2, 1], 7, 5, [4, 9, 2, 1], [2, 3, 6]]
+        
         :return: Boolean `True` or `False` if board was solvable.
         """
         m = 0
@@ -252,8 +268,6 @@ class SudokuCore:
             solvable = self.recursion()
         else:
             solvable = self.possible_positions()
-
-        # print("board:", *self.board, sep="\n")
 
         if not solvable:
             raise Exception(f"This board can't be solved with [{self.method}] method")
