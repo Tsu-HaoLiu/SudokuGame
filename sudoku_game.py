@@ -6,7 +6,7 @@
 #----------------------------------------------------------------------------
 
 __author__ = "Tsu-Hao Liu"
-__copyright__ = "Copyright 2022, Tsu-Hao's Simple Sudoku"
+__copyright__ = "Copyright 2022, Tsu-Hao's Simple Sudoku Game"
 
 __license__ = "MIT License"
 __version__ = "2022.1v9"
