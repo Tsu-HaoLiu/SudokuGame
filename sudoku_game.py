@@ -43,9 +43,9 @@ class GameBoard:
         self.count_up = None
 
         self.board = [[0] * 9 for _ in range(9)]
-        self.backbutt_img = pygame.transform.scale(pygame.image.load(resource_path('left.png')).convert_alpha(), (30, 30))
-        self.restartbutt_img = pygame.transform.scale(pygame.image.load(resource_path('restart.png')).convert_alpha(), (36, 36))
-        self.donebutt_img = pygame.transform.scale(pygame.image.load(resource_path('done.png')).convert_alpha(), (36, 36))
+        self.backbutt_img = pygame.transform.scale(pygame.image.load(resource_path('img/left.png')).convert_alpha(), (30, 30))
+        self.restartbutt_img = pygame.transform.scale(pygame.image.load(resource_path('img/restart.png')).convert_alpha(), (36, 36))
+        self.donebutt_img = pygame.transform.scale(pygame.image.load(resource_path('img/done.png')).convert_alpha(), (36, 36))
         self.back_button = None
 
         # basic font for user typed
@@ -387,7 +387,7 @@ class ColorTheme:
 
     def __init__(self):
         self.color = None
-        self.theme_logo = pygame.image.load(resource_path('theme.png')).convert_alpha()
+        self.theme_logo = pygame.image.load(resource_path('img/theme.png')).convert_alpha()
         self.theme_button = None
         self.bar_position = False
         self.theme_clicked = False
@@ -502,7 +502,7 @@ class MainMenu:
         self.render_diff = None
         self.base_font = pygame.font.Font(None, 32)
         self.diff_txt = pygame.font.Font(None, 24)
-        self.logo = pygame.image.load(resource_path('main_logo.png')).convert_alpha()
+        self.logo = pygame.image.load(resource_path('img/main_logo.png')).convert_alpha()
         self.logo = pygame.transform.scale(self.logo, (100, 100))
         self.logo = pygame.transform.rotate(self.logo, 45)
 
