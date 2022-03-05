@@ -1,6 +1,11 @@
 # SudokuGame
 
+## Description
+
+Sudoku is a logic-based, combinatorial number-placement puzzle. In classic sudoku, the objective is to fill a 9 × 9 grid with digits so that each column, each row, and each of the nine 3 × 3 subgrids that compose the grid contain all of the digits from 1 to 9. The puzzle setter provides a partially completed grid, which for a well-posed puzzle has a single solution.
+
 #### Rules of Sudoku
+
 
 1. You can only use numbers 1-9.
 2. Numbers cannot be used more than once in a single row/column/3x3.
@@ -27,6 +32,13 @@
 
 [![Screen-Theme](https://i.imgur.com/AWLN63Z.png)]()
 
+
+## Usage
+
+```
+pip3 install -r requirements.txt
+python3 sudoku_game.py 
+```
 
 ## Development
 
