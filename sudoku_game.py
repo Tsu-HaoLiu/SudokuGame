@@ -1,22 +1,10 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-#----------------------------------------------------------------------------
-# Created Date: Thursday January 20 18:41:00 UTC 2022
-"""sudoku_game.py: A sudoku game created with pygame"""
-#----------------------------------------------------------------------------
-
-__author__ = "Tsu-Hao Liu"
-__copyright__ = "Copyright 2022, Tsu-Hao's Simple Sudoku Game"
-
-__license__ = "MIT License"
-__version__ = "2022.1v9"
 
 # imports
 import pygame
 import time
 import copy
 import sys, os
-from sudoku_solver import SudokuCore
+from utils.sudoku_solver import SudokuBoard
 
 # pygame init
 pygame.init()
@@ -48,10 +36,10 @@ class GameBoard:
         self.donebutt_img = pygame.transform.scale(pygame.image.load(resource_path('img/done.png')).convert_alpha(), (36, 36))
         self.back_button = None
 
-        # basic font for user typed
+        # basic font
         self.base_font = pygame.font.Font(None, 32)
 
-        self.sc = SudokuCore()
+        self.sc = SudokuBoard()
         self.unfinished_board = []
         self.unfinished_boardcopy = []
         self.solved_board = []
@@ -110,10 +98,9 @@ class GameBoard:
         if all(0 not in t for t in self.unfinished_board) and self._active:
             if self.unfinished_board == self.solved_board and self.unfinished_board:
                 return True
-            self.sc.addboard(self.unfinished_board)
             for row in range(9):
                 for col in range(9):
-                    if not self.sc.possible_numbers(row, col, self.unfinished_board[row][col], method="recursion"):
+                    if not self.sc.is_valid(row, col, self.unfinished_board[row][col]):
                         return False
             return True
         return False
@@ -199,9 +186,9 @@ class GameBoard:
         surface.fill(safety_base_color)
         if not self.unfinished_board:
             # generate board
-            self.unfinished_board = self.sc.generate(self.difficulty)
+            self.solved_board = self.sc.generate()
+            self.unfinished_board = self.sc.scrambled_board(self.difficulty)
             self.unfinished_boardcopy = copy.deepcopy(self.unfinished_board)
-            self.solved_board = self.sc.solved_board()
             # print(*self.solved_board, sep="\n")  # cheat sheet
 
         for i in range(0, 10):
@@ -653,15 +640,19 @@ def main():
         for event in pygame.event.get():
             cleanup(event)
             if current_scene != 2:
-                theme_stat = theme.themeevent(event)  # checking if theme selector is active
+                # checking if theme selector is active
+                theme_stat = theme.themeevent(event)
 
             if current_scene == 1 and board.solved():
+                # check if the board is solved
                 set_scene = current_scene = 2
                 continue
 
             if current_scene == 0 and not theme_stat:
+                # main menu
                 menu.mouse_press(event)
                 if menu.startplaying(event):
+                    # start game
                     difficulty = menu.diff()
                     set_scene = current_scene = 1
             elif current_scene == 1 and not theme_stat:
