@@ -15,7 +15,8 @@ Sudoku is a logic-based, combinatorial number-placement puzzle. In classic sudok
 - Choose a difficulty with the left and right arrows.
 - Click "New Game" to start a Sudoku game with that difficulty.
 
-[![Screen-main-menu](https://i.imgur.com/nRqmYI9.png)]()
+![main-menu](https://github.com/Tsu-HaoLiu/SudokuGame/assets/96331813/99ca1703-bf76-453c-b41e-85fe2900338e)
+
 
 ### How to play the game
 
