@@ -8,7 +8,6 @@ Sudoku is a logic-based, combinatorial number-placement puzzle. In classic sudok
 1. You can only use numbers 1-9.
 2. Numbers cannot be used more than once in a single row/column/3x3.
 
-[![Screen-TUT](https://i.imgur.com/JHiedMf.png)]()
 
 ### How to navigate main menu & start a new game
 
